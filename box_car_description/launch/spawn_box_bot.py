@@ -10,10 +10,11 @@ def main(args=None):
     node = rclpy.create_node('minimal_client')
     cli = node.create_client(SpawnEntity, '/spawn_entity')
 
-    content = ""
-    if sys.argv[1] is not None:
-        with open(sys.argv[1], 'r') as content_file:
-            content = content_file.read()
+    # content = ""
+    # if sys.argv[1] is not None:
+    #     with open(sys.argv[1], 'r') as content_file:
+    #         content = content_file.read()
+    content = sys.argv[1]
 
     req = SpawnEntity.Request()
     req.name = "box_bot"
