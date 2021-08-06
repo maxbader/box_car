@@ -15,3 +15,7 @@ cd box_car_tutorials
 mkdir launch scripts
 
 # We add dependencies for python to have a hibrid package to be used for C++ and python for the future
+
+
+# Move the Car
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=/box_bot/cmd_vel
