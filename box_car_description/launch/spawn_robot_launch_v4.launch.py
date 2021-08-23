@@ -4,6 +4,8 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 import xacro
 
@@ -11,9 +13,7 @@ def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
-    # urdf = os.path.join(get_package_share_directory('box_car_description'), 'robot/', 'box_bot.urdf')    
-    # assert os.path.exists(urdf), "Thebox_bot.urdf doesnt exist in "+str(urdf)
-
+    pkg_box_car_description = get_package_share_directory('box_car_description')
     xacro_file = os.path.join(get_package_share_directory('box_car_description'), 'robot/', 'box_bot.xacro')    
     assert os.path.exists(xacro_file), "The box_bot.xacro doesnt exist in "+str(xacro_file)
 
@@ -22,17 +22,11 @@ def generate_launch_description():
 
     print(robot_desc)
     
-    # with open(urdf, 'r') as infp:
-    #     robot_desc = infp.read()
-
-
-    robot_controllers = PathJoinSubstitution(
-        [
-            FindPackageShare("box_car_description"),
-            "config",
-            "box_car_controllers.yaml",
-        ]
-    )
+    start_steering_control = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_box_car_description, 'launch', 'steering_control.launch.py'),
+        )
+    ) 
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -47,14 +41,6 @@ def generate_launch_description():
             parameters=[
                 {"robot_description": robot_desc}],
             output="screen"),
-        Node(
-        package="controller_manager",
-        executable="ros2_control_node",
-        parameters=[{"robot_description": robot_desc}, 
-                    robot_controllers],
-        output={
-            "stdout": "screen",
-            "stderr": "screen",
-            },
-        ),
+        #start_steering_control,
     ])
+

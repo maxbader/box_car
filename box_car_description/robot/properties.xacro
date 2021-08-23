@@ -23,4 +23,7 @@
     <!--Caster Wheels-->
     <xacro:property name="dummy_length" value="0.001"/>
 
+    <!--Steering Joints Links-->
+    <xacro:property name="steering_joint_length" value="0.005"/>
+
 </robot>

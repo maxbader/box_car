@@ -36,6 +36,7 @@ install(
   DIRECTORY
     launch
     robot
+    config
   DESTINATION
     share/${PROJECT_NAME}/
 )

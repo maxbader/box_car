@@ -36,4 +36,19 @@
   </xacro:macro >
 
 
+  <!-- EXtra steering classes -->
+
+  <xacro:macro name="steering_joint" params="name1 name2 posxyz posrpy rot limlow limhigh limef limvel fr dm">
+      <joint name="${name1}__${name2}" type="revolute">
+        <parent link="${name1}"/>
+        <child link="${name2}"/>
+          <origin xyz="${posxyz}" rpy="${posrpy}"/>
+          <limit lower="${limlow}" upper="${limhigh}" effort="${limef}" velocity="${limvel}"/>
+          <axis xyz="${rot}"/>
+          <!-- TODO: When setting thes evalues, joint breaks -->
+          <!-- <dynamics friction="${fr}" damping="${dm}"/> -->
+    </joint>
+  </xacro:macro>
+
+
 </robot>
