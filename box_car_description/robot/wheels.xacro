@@ -17,8 +17,11 @@
           </collision>
           <visual name="link_right_wheel_visual">
             <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-            <geometry>
+            <!-- <geometry>
               <cylinder length="${l}" radius="${r + incr}"/>
+            </geometry> -->
+            <geometry>
+              <mesh filename="/home/tgrip/TheConstruct/ros_2_playground/box_car_ws/src/box_car/box_car_description/meshes/wheel.dae" scale="1.0 1.0 1.0"/>
             </geometry>
           </visual>
       </link>
@@ -45,6 +48,7 @@
           <origin xyz="${posxyz}" rpy="${posrpy}"/>
           <limit lower="${limlow}" upper="${limhigh}" effort="${limef}" velocity="${limvel}"/>
           <axis xyz="${rot}"/>
+          <dynamics damping="${dm}" friction="${fr}"/>
           <!-- TODO: When setting thes evalues, joint breaks -->
           <!-- <dynamics friction="${fr}" damping="${dm}"/> -->
     </joint>

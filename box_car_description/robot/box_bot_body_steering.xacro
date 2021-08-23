@@ -19,11 +19,11 @@
           </geometry>
         </collision>
 
-        <visual name="visual_${name}">
+        <!-- <visual name="visual_${name}">
           <geometry>
             <box size="${base_box_x} ${base_box_y} ${base_box_z}"/>
           </geometry>
-        </visual>
+        </visual> -->
       </link>
 
       <gazebo reference="${name}">

@@ -25,5 +25,14 @@
 
     <!--Steering Joints Links-->
     <xacro:property name="steering_joint_length" value="0.005"/>
+    <xacro:property name="steer_limlow" value="-0.6108"/>
+    <xacro:property name="steer_limhigh" value="0.6108"/>
+    <xacro:property name="steer_force" value="1000"/>
+    <xacro:property name="steer_vel" value="1.0"/>
+    <xacro:property name="steer_fric" value="2.0"/>
+    <xacro:property name="steer_amort" value="0.0"/>
+    
+    
+    
 
 </robot>

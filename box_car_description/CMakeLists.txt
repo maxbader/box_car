@@ -37,6 +37,7 @@ install(
     launch
     robot
     config
+    meshes
   DESTINATION
     share/${PROJECT_NAME}/
 )
@@ -44,6 +45,11 @@ install(
 install(
   PROGRAMS
   launch/spawn_box_bot.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(PROGRAMS
+  scripts/wheel_steer.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
