@@ -21,4 +21,6 @@ reset;ros2 launch box_car_gazebo box_bot_launch.py
 # Move the Car
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=/box_bot/cmd_vel
 # Turn Wheels
+ros2 control load_controller --set-state start joint_state_broadcaster
+ros2 control load_controller --set-state start joint_trajectory_controller
 ros2 launch box_car_description steering.launch.py

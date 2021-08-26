@@ -11,5 +11,5 @@ def generate_launch_description():
             package='box_car_description',
             executable='wheel_steer.py',
             output='screen',
-            arguments=["0.5"]),
+            arguments=["0.1"]),
     ])
